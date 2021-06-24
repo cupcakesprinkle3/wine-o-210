@@ -2,4 +2,4 @@ DROP DATABASE IF EXISTS wine_db;
 
 CREATE DATABASE wine_db;
 
-USE DATABASE wine_db;
+USE wine_db;
