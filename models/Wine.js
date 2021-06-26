@@ -14,6 +14,7 @@ Wine.init(
       },
       wine_year: {
           type: DataTypes.INTEGER,
+          len: [4],
           allowNull: false
       },
       category: {
@@ -43,5 +44,5 @@ Wine.init(
         sequelize
         
       });
-      
+
 module.exports = Wine;
