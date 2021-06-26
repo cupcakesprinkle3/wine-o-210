@@ -4,16 +4,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Be nice</title>
+  <title>Wine-O-210</title>
   <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"/>
 </head>
 
 <body>
-  <div class="wrapper">
-    <main>
-      {{{ body }}}
-    </main>
+  <!-- Header -->
+  <header>
+      <h1 class="text-center pt-5"><i class="fas fa-wine-glass"></i> Wine Rack</h1>
+      <nav class="navbar navbar-expand-sm navbar-light">
+          <div class="collapse navbar-collapse" id="">
+            <div class="navbar-nav m-auto">
+              <a class="nav-item nav-link" href="/">Home</a>
+
+              {{#if loggedIn}}
+                  <a class="nav-item nav-link" href="/inventory">Inventory</a>
+                  <a id="logout" class="nav-item nav-link">Logout</a>
+              {{else}}
+                  <a class="nav-item nav-link" href="/login">Login</a>
+              {{/if}}
+
+            </div>
+          </div>
+        </nav>    
+  </header>
+
+  <!-- Hero -->
+  <div>
+    <img src="/images/hero.jpg" class="img-fluid" alt="Group enjoying a glass of Wine!">
   </div>
+
+  <main class="p-3">
+      {{{ body }}}
+  </main>
+
+  <footer>
+    {{>footer}} 
+  </footer>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  
+  {{#if loggedIn}}
+    <script src="/javascript/logout.js"></script>
+  {{/if}}
+
 </body>
 
 </html>
