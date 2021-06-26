@@ -1,1 +1,18 @@
 /* RESET? css framework? */
+
+.footer {
+    display: table;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.reply-body {
+    height: 120px;
+    width: 590px;
+}
+
+#wine-img {
+    width: 200px;
+    height: 300px;
+}

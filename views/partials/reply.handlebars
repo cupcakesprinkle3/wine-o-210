@@ -1,0 +1,19 @@
+<div class="reply">
+
+  {{#each this}}
+  <section class="reply bg-light m-3 p-3 rounded">
+
+    <div class="">
+      <span class="font-weight-bold">{{user.username}}</span> on {{format_date created_at}}
+    </div>
+
+    <div class="text">
+      <p class="m-3">
+        {{reply_text}}
+      </p>
+    </div>
+
+  </section>
+  {{/each}}
+  
+</div>
