@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const withAuth = require('../utils/auth');
 const { User } = require('../../models');
 
 // get all users
@@ -19,26 +20,26 @@ router.get('/:id', (req, res) => {
     where: {
       id: req.params.id
     },
-    // include: [
-    //   {
-    //     model: Post,
-    //     attributes: ['id', 'title', 'post_url', 'created_at']
-    //   },
-    //   {
-    //     model: Comment,
-    //     attributes: ['id', 'comment_text', 'created_at'],
-    //     include: {
-    //       model: Post,
-    //       attributes: ['title']
-    //     }
-    //   },
+    include: [
+      {
+        model: Wine,
+        attributes: ['id', 'wine_maker', 'wine_year', 'category', 'type', 'price', 'notes', 'created_at']
+      },
+      {
+        model: Reply,
+        attributes: ['reply_text', 'created_at'],
+        include: {
+          model: Wine,
+          attributes: ['id', 'wine_maker', 'wine_year', 'category', 'type']
+        }
+      },
     //   {
     //     model: Post,
     //     attributes: ['title'],
     //     through: Vote,
     //     as: 'voted_posts'
     //   }
-    // ]
+    ]
   })
     .then(dbUserData => {
       if (!dbUserData) {
@@ -53,7 +54,8 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.post('/', (req, res) => {
+
+router.post('/', withAuth, (req, res) => {
   // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
   User.create({
     username: req.body.username,
@@ -75,7 +77,7 @@ router.post('/', (req, res) => {
     });
 });
 
-router.post('/login', (req, res) => {
+router.post('/login', withAuth, (req, res) => {
   // expects {email: 'lernantino@gmail.com', password: 'password1234'}
   User.findOne({
     where: {
@@ -104,7 +106,7 @@ router.post('/login', (req, res) => {
   });
 });
 
-router.post('/logout', (req, res) => {
+router.post('/logout', withAuth, (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
@@ -115,7 +117,7 @@ router.post('/logout', (req, res) => {
   }
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
   // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
 
   // pass in req.body instead to only update what's passed through
@@ -138,7 +140,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
   User.destroy({
     where: {
       id: req.params.id
