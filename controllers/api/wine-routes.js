@@ -1,13 +1,21 @@
 const router = require('express').Router();
-const withAuth = require('../utils/auth');
-const { Wine, User, Reply } = require('../../models');
+const withAuth = require('../../utils/auth');
+const sequelize = require('../../config/connection');
+const { Wine, User, Reply, Vote } = require('../../models');
 
 // get all wines
 router.get('/', (req, res) => {
     Wine.findAll({
-        attributes: ['id', 'wine_maker', 'wine_year', 'category', 'type', 'price', 'notes', 'created_at'],
-        order: [['created_at', 'DESC']],
-        // all_replies (this may be a reference from the Replies model ??)
+        attributes: [
+            'id', 
+            'wine_maker', 
+            'wine_year', 
+            'category', 
+            'type', 
+            'price', 
+            'notes', 
+            [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE wine.id = vote.wine_id)'), 'vote_count'] 
+        ],
 
         include: [
             {
@@ -36,7 +44,16 @@ router.get('/:id', (req, res) => {
         where: {
             id: req.params.id
         },
-        attributes: ['id', 'wine_maker', 'wine_year', 'category', 'type', 'price', 'notes', 'created_at'],
+        attributes: [
+            'id', 
+            'wine_maker', 
+            'wine_year', 
+            'category', 
+            'type', 
+            'price', 
+            'notes', 
+            [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE wine.id = vote.wine_id)'), 'vote_count']
+        ],
         include: [
             {
                 model: Reply,
@@ -54,7 +71,7 @@ router.get('/:id', (req, res) => {
     })
         .then(dbWineData => {
             if (!dbWineData) {
-                res.status(404).json({ message: 'No wine entry found with this id' });
+                res.status(404).json({ message: 'No wine found with this id' });
                 return;
             }
             res.json(dbWineData);
@@ -84,6 +101,18 @@ router.post('/', withAuth, (req, res) => {
             res.status(500).json(err);
         });
 });
+
+//Wine voting route
+router.put('/vote', withAuth, (req, res) => {
+    if (req.session) {
+      Wine.vote({ ...req.body, user_id: req.session.user_id }, { Vote, Comment, User })
+        .then(updatedVoteData => res.json(updatedVoteData))
+        .catch(err => {
+          console.log(err);
+          res.status(500).json(err);
+        });
+    }
+  });
 
 // UPDATE ORIGINAL NOTES TO A WINE ENTRY
 router.put('/:id', withAuth, (req, res) => {

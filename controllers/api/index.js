@@ -5,8 +5,8 @@ const wineRoutes = require('./wine-routes');
 const replyRoutes = require('./reply-routes');
 
 router.use('/users', userRoutes);
-router.use('/wines', wineRoutes);
-router.use('/replies', replyRoutes);
+router.use('/wine', wineRoutes);
+router.use('/reply', replyRoutes);
 
 module.exports = router;
 

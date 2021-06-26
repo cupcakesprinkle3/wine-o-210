@@ -8,7 +8,7 @@ async function replyFormHandler(event) {
     ];
   
     if (reply_text) {
-        const response = await fetch('/api/replies', {
+        const response = await fetch('/api/reply', {
           method: 'POST',
           body: JSON.stringify({
             wine_id,
