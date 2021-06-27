@@ -105,7 +105,7 @@ router.post('/', withAuth, (req, res) => {
 //Wine voting route
 router.put('/vote', withAuth, (req, res) => {
     if (req.session) {
-      Wine.vote({ ...req.body, user_id: req.session.user_id }, { Vote, Comment, User })
+      Wine.vote({ ...req.body, user_id: req.session.user_id }, { Vote, Reply, User })
         .then(updatedVoteData => res.json(updatedVoteData))
         .catch(err => {
           console.log(err);
