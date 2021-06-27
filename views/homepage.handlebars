@@ -1,9 +1,9 @@
 <main>
     <div class="p-3">
-        <h2 class="text-center text-light">Featured Wine</h2>
+        <h2 class="text-center text-light pb-3">Featured Wine</h2>
         <div class="container animate__animated animate__fadeInUp">
             <ol class="container "> 
-                {{#each this}}
+                {{#each wines as |wine|}}
                 {{> dashboard-cards}}
                 {{/each}}
             </ol>    

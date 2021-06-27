@@ -1,22 +1,22 @@
+
 <li class="row justify-content-center m-3">
     <div class="col-md-9">
         <div class="card shadow bg-white rounded">
             <div class="card-header">
                 <div class="row">
-                <span class="col-4 font-weight-bold"><a href="/dashboard/wine/{{id}}"><i class="fas fa-wine-glass"></i> Barefoot Cabernet Sauvignon</a></span>
+                <span class="col-4 font-weight-bold"><a href="/dashboard/wine/{{id}}"><i class="fas fa-wine-glass"></i> {{wine_maker}} {{type}} </a></span>
                 <span class="col-4 font-italic"></span>
-                <span class="col-4 text-right font-weight-bold">{{vote_count}} 3 {{format_plural "vote" vote_count}}</span>
+                <span class="col-4 text-end font-weight-bold">{{vote_count}} {{format_plural "vote" vote_count}}</span>
                 </div>
             </div>
             <div class="card-body row">
-                <img id="wine-img" class="rounded" src="/images/{{name}}.jpg" alt="{{name}}">
-                <div class="col-7">
-                    <p>Posted by: thisEmcee {{user.username}}</p>
-                    <p>Wine maker: Barefoot {{wine_maker}}</p>
-                    <p>Wine year: 2010 {{wine_year}}</p>
-                    <p>Type: Cabernet Sauvignon {{type}}</p>
-                    <p>Price: $42.99 {{price}}</p>
-                    <p>Notes: This is a note {{notes}}</p>
+                <div class="col-8">
+                    <p>Posted by: {{user.username}}</p>
+                    <p>Wine maker: {{wine_maker}}</p>
+                    <p>Wine year: {{wine_year}}</p>
+                    <p>Type: {{type}}</p>
+                    <p>Price: ${{price}}</p>
+                    <p>Notes: {{notes}}</p>
                 </div>
             </div>
         </div>
