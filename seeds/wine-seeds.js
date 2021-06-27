@@ -1,97 +1,50 @@
-const sequelize = require('../config/connection');
-const { User } = require('../models');
+const { Wine } = require('../models');
 
-const winelist = [
+//attributes: ['id', 'wine_maker', 'wine_year', 'category', 'type', 'price', 'notes', 'created_at']
+const wineData = [
     {
-        wine_maker: '',
-        wine_year: '',
-        categor: '',
-        type: '',
-        price: '',
-        notes: '',
-        created_at: ''
+        name: '1',
+        type: 'Test',
+        wine_maker: 'Test',
+        wine_year: '2020',
+        category: 'soemthing',
+        price: '858',
+        notes: 'Notes 1Notes 1Notes 1Notes 1Notes 1',
+        created_at: new Date(),
     },
     {
-        wine_maker: '',
-        wine_year: '',
-        categor: '',
-        type: '',
-        price: '',
-        notes: '',
-        created_at: ''
+        name: '2',
+        type: 'Test',
+        wine_maker: 'Test',
+        wine_year: '2020',
+        category: 'soemthing',
+        price: '858',
+        notes: 'Notes 2Notes 2Notes 2Notes 2',
+        created_at: new Date(),
     },
     {
-        wine_maker: '',
-        wine_year: '',
-        categor: '',
-        type: '',
-        price: '',
-        notes: '',
-        created_at: ''
+        name: '3',
+        type: 'Test',
+        wine_maker: 'Test',
+        wine_year: '2020',
+        category: 'soemthing',
+        price: '858',
+        notes: 'Notes 3Notes 3Notes 3',
+        created_at: new Date(),
     },
     {
-        wine_maker: '',
-        wine_year: '',
-        categor: '',
-        type: '',
-        price: '',
-        notes: '',
-        created_at: ''
+        name: '4',
+        type: 'Test',
+        wine_maker: 'Test',
+        wine_year: '2020',
+        category: 'soemthing',
+        price: '858',
+        notes: 'Notes 4Notes 4Notes 4Notes 4Notes 4',
+        created_at: new Date(),
     },
-    {
-        wine_maker: '',
-        wine_year: '',
-        categor: '',
-        type: '',
-        price: '',
-        notes: '',
-        created_at: ''
-    },
-    {
-        wine_maker: '',
-        wine_year: '',
-        categor: '',
-        type: '',
-        price: '',
-        notes: '',
-        created_at: ''
-    },
-    {
-        wine_maker: '',
-        wine_year: '',
-        categor: '',
-        type: '',
-        price: '',
-        notes: '',
-        created_at: ''
-    },
-    {
-        wine_maker: '',
-        wine_year: '',
-        categor: '',
-        type: '',
-        price: '',
-        notes: '',
-        created_at: ''
-    },
-    {
-        wine_maker: '',
-        wine_year: '',
-        categor: '',
-        type: '',
-        price: '',
-        notes: '',
-        created_at: ''
-    },
-    {
-        wine_maker: '',
-        wine_year: '',
-        categor: '',
-        type: '',
-        price: '',
-        notes: '',
-        created_at: ''
-    },
+    
 ];
 
-module.exports = winelist;
+const seedWine = () => Wine.bulkCreate(wineData);
+
+module.exports = seedWine;

@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const withAuth = require('../utils/auth');
-const { User } = require('../../models');
+const withAuth = require('../../utils/auth');
+const { User, Wine, Reply, Vote } = require('../../models');
 
 // get all users
 router.get('/', (req, res) => {
@@ -25,20 +25,22 @@ router.get('/:id', (req, res) => {
         model: Wine,
         attributes: ['id', 'wine_maker', 'wine_year', 'category', 'type', 'price', 'notes', 'created_at']
       },
+
       {
         model: Reply,
-        attributes: ['reply_text', 'created_at'],
+        attributes: ['id','wine_id','reply_text','user_id', 'created_at'],
         include: {
           model: Wine,
-          attributes: ['id', 'wine_maker', 'wine_year', 'category', 'type']
+          attributes: ['name']
         }
       },
-    //   {
-    //     model: Post,
-    //     attributes: ['title'],
-    //     through: Vote,
-    //     as: 'voted_posts'
-    //   }
+      {
+        model: Wine,
+        attributes: ['title'],
+        through: Vote,
+        as: 'voted_wine'
+      },
+      
     ]
   })
     .then(dbUserData => {
@@ -54,8 +56,8 @@ router.get('/:id', (req, res) => {
     });
 });
 
-
-router.post('/', withAuth, (req, res) => {
+// Post Users
+router.post('/signup', (req, res) => {
   // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
   User.create({
     username: req.body.username,
@@ -65,7 +67,7 @@ router.post('/', withAuth, (req, res) => {
     .then(dbUserData => {
       req.session.save(() => {
         req.session.user_id = dbUserData.id;
-        req.session.username = dbUserData.username;
+        req.session.email = dbUserData.email;
         req.session.loggedIn = true;
   
         res.json(dbUserData);
@@ -77,15 +79,15 @@ router.post('/', withAuth, (req, res) => {
     });
 });
 
-router.post('/login', withAuth, (req, res) => {
+router.post('/login', (req, res) => {
   // expects {email: 'lernantino@gmail.com', password: 'password1234'}
   User.findOne({
     where: {
-      email: req.body.email
+      username: req.body.username
     }
   }).then(dbUserData => {
     if (!dbUserData) {
-      res.status(400).json({ message: 'No user with that email address!' });
+      res.status(400).json({ message: 'No user with that user name!' });
       return;
     }
 
@@ -98,7 +100,7 @@ router.post('/login', withAuth, (req, res) => {
 
     req.session.save(() => {
       req.session.user_id = dbUserData.id;
-      req.session.username = dbUserData.username;
+      req.session.email = dbUserData.email;
       req.session.loggedIn = true;
   
       res.json({ user: dbUserData, message: 'You are now logged in!' });
@@ -128,7 +130,7 @@ router.put('/:id', withAuth, (req, res) => {
     }
   })
     .then(dbUserData => {
-      if (!dbUserData) {
+      if (!dbUserData[0]) {
         res.status(404).json({ message: 'No user found with this id' });
         return;
       }

@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Wine, User, Reply } = require('../models');
+const { Wine, User, Reply, Vote } = require('../models');
 
 
 // get all wine entries for homepage
@@ -15,8 +15,8 @@ router.get('/', (req, res) => {
       'type', 
       'price', 
       'notes', 
-      'created_at'
-      // [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE wine.id = vote.wine_id)'), 'vote_count']
+      'created_at',
+      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE wine.id = vote.wine_id)'), 'vote_count']
     ],
     include: [
       {
@@ -47,6 +47,14 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/login', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+  res.render('login');
+});
+
 // get single post
 router.get('/wine/:id', (req, res) => {
   Wine.findOne({
@@ -62,7 +70,7 @@ router.get('/wine/:id', (req, res) => {
       'price', 
       'notes', 
       'created_at'
-      // [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
+      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
     ],
     include: [
       {
@@ -96,15 +104,6 @@ router.get('/wine/:id', (req, res) => {
       console.log(err);
       res.status(500).json(err);
     });
-});
-
-router.get('/login', (req, res) => {
-  if (req.session.loggedIn) {
-    res.redirect('/');
-    return;
-  }
-
-  res.render('login');
 });
 
 
