@@ -3,7 +3,6 @@ const { Wine } = require('../models');
 //attributes: ['id', 'wine_maker', 'wine_year', 'category', 'type', 'price', 'notes', 'created_at']
 const wineData = [
     {
-        name: '1',
         type: 'Test',
         wine_maker: 'Test',
         wine_year: '2020',
@@ -13,7 +12,6 @@ const wineData = [
         created_at: new Date(),
     },
     {
-        name: '2',
         type: 'Test',
         wine_maker: 'Test',
         wine_year: '2020',
@@ -23,7 +21,6 @@ const wineData = [
         created_at: new Date(),
     },
     {
-        name: '3',
         type: 'Test',
         wine_maker: 'Test',
         wine_year: '2020',
@@ -33,7 +30,6 @@ const wineData = [
         created_at: new Date(),
     },
     {
-        name: '4',
         type: 'Test',
         wine_maker: 'Test',
         wine_year: '2020',
