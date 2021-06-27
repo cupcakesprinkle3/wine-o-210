@@ -21,9 +21,10 @@
                         <div class="modal-body">
                             <!-- Form goes here -->
                             <form class="new-wine">
+
                                 <div>
-                                    <label for="name">What is the wine called?</label>
-                                    <input type="text" id="name" />
+                                    <label for="wine-maker">Who made the wine?</label>
+                                    <input type="text" id="wine-maker" />
                                 </div>
 
                                 <div>
@@ -39,11 +40,6 @@
                                         <option value="Type 6">
                                         <option value="Type 7">
                                     </datalist>
-                                </div>
-
-                                <div>
-                                    <label for="wine-maker">Who made the wine?</label>
-                                    <input type="text" id="wine-maker" />
                                 </div>
 
                                 <div>
@@ -88,9 +84,9 @@
 
             <!-- List -->
             <ol class="container animate__animated animate__fadeInUp">
-                {{#if wines.length}}
-                    {{#each wines as |wine|}}
-                        {{>dashboard-cards wine}}
+                {{#if wine.length}}
+                    {{#each Wines as |wine|}}
+                        {{>dashboard-cards}}
                     {{/each}}
             </ol>
                 {{else}}

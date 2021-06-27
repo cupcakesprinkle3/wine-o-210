@@ -3,7 +3,6 @@ async function newWineHandler(event) {
 
     //['id', 'wine_maker', 'wine_year', 'category', 'type', 'price', 'notes', 'created_at']
 
-    const name = document.querySelector('#name').value.trim();
     const wine_maker = document.querySelector('#wine-maker').value.trim();
     const wine_year = document.querySelector('#wine-year').value.trim();
     const category = document.querySelector('#category').value.trim();
@@ -14,7 +13,6 @@ async function newWineHandler(event) {
     const response = await fetch(`/api/wine`, {
       method: 'POST',
       body: JSON.stringify({
-        name,
         wine_maker,
         wine_year,
         category,
