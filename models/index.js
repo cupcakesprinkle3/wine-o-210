@@ -56,4 +56,4 @@ Wine.hasMany(Reply, {
     foreignKey: 'wine_id'
 });
 
-module.exports = { User, Wine, Reply };
+module.exports = { User, Wine, Reply, Vote };

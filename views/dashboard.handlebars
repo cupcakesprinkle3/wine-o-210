@@ -1,10 +1,11 @@
 <main class="">
     <div class="container">
         <div class="d-flex justify-content-around align-items-center p-3">
-            <h2 class="text-light">My Dashboard</h2>
-            
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add +</button>                
+        <h2 class="text-light">My Dashboard</h2>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add +</button>  
+        </div>
+        <div class="d-flex justify-content-around align-items-center p-3">            
             
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -82,16 +83,21 @@
                 </div>
             </div>
 
-            <!-- List -->
+            {{!-- <!-- List -->
             <ol class="container animate__animated animate__fadeInUp">
                 {{#if wine.length}}
                     {{#each Wines as |wine|}}
-                        {{>dashboard-cards}}
+                        {{> dashboard-cards}}
                     {{/each}}
             </ol>
                 {{else}}
                     <h6 class="text-center text-light font-italic m-3">You do not currently have any wine!</h6>
-                {{/if}}
+                {{/if}} --}}
+                <ol class="container "> 
+                        {{#each this}}
+                        {{> dashboard-cards}}
+                        {{/each}}
+                </ol>  
         </div>
     </div>
 </main>
