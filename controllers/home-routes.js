@@ -3,7 +3,7 @@ const sequelize = require('../config/connection');
 const { Wine, User, Reply, Vote } = require('../models');
 
 
-// get all wine entries for homepage
+// get all wine wines for homepage
 router.get('/', (req, res) => {
   console.log('======================');
   Wine.findAll({
@@ -34,10 +34,10 @@ router.get('/', (req, res) => {
     ]
   })
     .then(dbWineData => {
-      const entries = dbWineData.map(entry => entry.get({ plain: true }));
+      const wines = dbWineData.map(wine => wine.get({ plain: true }));
 
       res.render('homepage', {
-        entries,
+        wines,
         loggedIn: req.session.loggedIn
       });
     })
@@ -89,14 +89,14 @@ router.get('/wine/:id', (req, res) => {
   })
     .then(dbWineData => {
       if (!dbWineData) {
-        res.status(404).json({ message: 'No wine entry found with this id' });
+        res.status(404).json({ message: 'No wine wine found with this id' });
         return;
       }
 
-      const entry = dbWineData.get({ plain: true });
+      const wine = dbWineData.get({ plain: true });
 
       res.render('single-post', {
-        entry,
+        wine,
         loggedIn: req.session.loggedIn
       });
     })

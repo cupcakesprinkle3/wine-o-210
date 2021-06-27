@@ -39,8 +39,8 @@ router.get('/', withAuth, (req, res) => {
     })
       .then(dbWineData => {
         // serialize data before passing to template
-        const entries = dbWineData.map(entry => entry.get({ plain: true }));
-        res.render('dashboard', { entries, loggedIn: true });
+        const wines = dbWineData.map(wine => wine.get({ plain: true }));
+        res.render('dashboard', { wines, loggedIn: true });
       })
       .catch(err => {
         console.log(err);

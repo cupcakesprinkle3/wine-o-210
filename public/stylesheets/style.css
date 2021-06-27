@@ -20,7 +20,7 @@ footer {
 
 a {
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
 header {
@@ -28,6 +28,10 @@ header {
 }
 
 main {
-    background-color: #49111C;
+    background-color: #3c191d;
     padding: 0 0 15px 0;
+}
+
+#winebg {
+    background-color: #3c191d;
 }
