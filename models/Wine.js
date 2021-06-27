@@ -37,10 +37,10 @@ Wine.init(
             autoIncrement: true
           },
 
-        name: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
+        // name: {
+        //     type: DataTypes.STRING,
+        //     allowNull: false
+        // },
 
         wine_maker: {
             type: DataTypes.STRING,
