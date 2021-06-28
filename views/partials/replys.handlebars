@@ -1,0 +1,19 @@
+<div class="replys">
+  {{#each this}}
+    <div class="card m-3">
+
+        <section class="reply card-body">
+
+            <div class="text">
+                {{reply_text}}
+            </div>
+
+            <div class="meta">
+                -{{user.username}}, {{format_date created_at}}
+            </div>
+
+        </section>
+
+    </div>
+  {{/each}}
+</div>
