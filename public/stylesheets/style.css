@@ -3,6 +3,8 @@
 footer {
     text-align: center; 
     text-decoration: none;
+    color: white;
+    background-color: #352022;
 }
 
 .reply-body {
@@ -25,12 +27,24 @@ a {
 
 header {
     text-align: center;
+    background-color: #352022;
+    color: white;
 }
 
 main {
     background-color: #3c191d;
     padding: 0 0 15px 0;
 }
+
+.darkmode--activated main {
+    background-color: #07428C;
+    padding: 0 0 15px 0;
+  }
+
+.darkmode--activated header {
+    background-color:  #2b4469;
+    padding: 0 0 15px 0;
+  }
 
 #winebg {
     background-color: #3c191d;
