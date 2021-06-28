@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
       'price', 
       'notes', 
       'created_at',
-      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE wine.id = vote.wine_id)'), 'vote_count']
+      // [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE wine.id = vote.wine_id)'), 'vote_count']
     ],
     include: [
       {
@@ -47,13 +47,6 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/login', (req, res) => {
-  if (req.session.loggedIn) {
-    res.redirect('/');
-    return;
-  }
-  res.render('login');
-});
 
 // get single post
 router.get('/wine/:id', (req, res) => {
@@ -70,7 +63,7 @@ router.get('/wine/:id', (req, res) => {
       'price', 
       'notes', 
       'created_at'
-      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
+      // [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
     ],
     include: [
       {
@@ -95,7 +88,7 @@ router.get('/wine/:id', (req, res) => {
 
       const wine = dbWineData.get({ plain: true });
 
-      res.render('single-post', {
+      res.render('single-wine', {
         wine,
         loggedIn: req.session.loggedIn
       });
@@ -106,6 +99,13 @@ router.get('/wine/:id', (req, res) => {
     });
 });
 
+router.get('/login', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+  res.render('login');
+});
 
 module.exports = router;
 
