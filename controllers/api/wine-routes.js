@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
             'type', 
             'price', 
             'notes', 
-            // [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE wine.id = vote.wine_id)'), 'vote_count'] 
+            [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE wine.id = vote.wine_id)'), 'vote_count'] 
         ],
 
         include: [
@@ -52,7 +52,7 @@ router.get('/:id', (req, res) => {
             'type', 
             'price', 
             'notes', 
-            // [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE wine.id = vote.wine_id)'), 'vote_count']
+            [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE wine.id = vote.wine_id)'), 'vote_count']
         ],
         include: [
             {
@@ -139,18 +139,18 @@ router.put('/:id', withAuth, (req, res) => {
         });
 });
 
-// router.put('/upvote', (req, res) => {
-//     // make sure the session exists first
-//     if (req.session) {
-//         // pass session id along with all destructured properties on req.body
-//         Wine.upvote({ ...req.body, user_id: req.session.user_id }, { Vote, Reply, User })
-//             .then(updatedVoteData => res.json(updatedVoteData))
-//             .catch(err => {
-//                 console.log(err);
-//                 res.status(500).json(err);
-//             });
-//     }
-// });
+router.put('/vote', (req, res) => {
+    // make sure the session exists first
+    if (req.session) {
+        // pass session id along with all destructured properties on req.body
+        Wine.vote({ ...req.body, user_id: req.session.user_id }, { Vote, Reply, User })
+            .then(updatedVoteData => res.json(updatedVoteData))
+            .catch(err => {
+                console.log(err);
+                res.status(500).json(err);
+            });
+    }
+});
 
 router.delete('/:id', withAuth, (req, res) => {
     Wine.destroy({

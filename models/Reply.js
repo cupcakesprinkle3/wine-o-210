@@ -8,9 +8,9 @@ Reply.init(
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
-        allowNull: false,
         autoIncrement: true
       },
+
       user_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -19,6 +19,7 @@ Reply.init(
           key: 'id'
         }
       },
+
       wine_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -27,9 +28,9 @@ Reply.init(
           key: 'id'
         }
       },
+
       reply_text: {
         type: DataTypes.STRING,
-        allowNull: false,
         validate: {
             len: [1]
         }

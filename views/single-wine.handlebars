@@ -1,6 +1,7 @@
+<container>
 <div class="row justify-content-center">
   
-    <div class="col-8">
+    <div class="col-10">
         <!-- displaying articles -->
         {{> dashboard-cards wine}}
     </div>  
@@ -9,11 +10,12 @@
   <!-- only display if logged in -->
   {{#if loggedIn}}
   <div class="">
-    <div class="row justify-content-center">
-      <div class="card col-8">
+    <div class="row justify-content-center ">
+      <div class="card col-md-7 m-3">
         <form class="reply-form">
-          <div class="m-3 col">
-            <textarea class="reply-body" name="reply-body"></textarea>
+          <div class="m-4">
+            <label for="reply-body" class="col col-form-label">Post a Comment!</label><br>
+            <textarea class="reply-body" name="reply-body" style="width: 100%;"></textarea>
           </div>
 
           <div class="row justify-content-center">
@@ -28,12 +30,12 @@
   {{/if}}
 
   <div class="row justify-content-center">
-      <div class="card col-md-6 m-3">
-          {{> reply wine.reply}}
+      <div class="card col-md-7 m-3">
+          {{> replys wine.replies}}
       </div>
   </div>
 </div>
-
+</container>
 
 
 {{#if loggedIn}}

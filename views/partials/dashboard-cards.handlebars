@@ -4,13 +4,12 @@
         <div class="card shadow bg-white rounded">
             <div class="card-header">
                 <div class="row">
-                <span class="col-4 font-weight-bold"><a href="/dashboard/wine/{{id}}"><i class="fas fa-wine-glass"></i> {{wine_maker}} {{type}} </a></span>
-                <span class="col-4 font-italic"></span>
+                <span class="col-8 font-weight-bold"><a href="/dashboard/wine/{{id}}"><i class="fas fa-wine-glass"></i> {{wine_maker}} {{type}} </a></span>
                 <span class="col-4 text-end font-weight-bold">{{vote_count}} {{format_plural "vote" vote_count}}</span>
                 </div>
             </div>
             <div class="card-body row">
-                <div class="col-8">
+                <div class="col-8" style="width: 100%;">
                     <p>Posted by: {{user.username}}</p>
                     <p>Wine maker: {{wine_maker}}</p>
                     <p>Wine year: {{wine_year}}</p>
