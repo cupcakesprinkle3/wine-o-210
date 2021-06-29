@@ -4,7 +4,7 @@ footer {
     text-align: center; 
     text-decoration: none;
     color: white;
-    background-color: #352022;
+    background-color: #3c191d;
 }
 
 .reply-body {
@@ -12,22 +12,18 @@ footer {
     width: 590px;
 }
 
-#wine-pic {
-    width: 200px;
-    height: 300px;
-}
 .dash-head {
     font-weight: bold;
 }
 
 a {
     text-decoration: none;
-    color: white;
+    color: #3c191d;
 }
 
 header {
     text-align: center;
-    background-color: #352022;
+    background-color: #3c191d;
     color: white;
 }
 
@@ -39,13 +35,25 @@ main {
 .darkmode--activated main {
     background-color: #07428C;
     padding: 0 0 15px 0;
-  }
+}
 
 .darkmode--activated header {
-    background-color:  #2b4469;
+    background-color:  #07428C;
     padding: 0 0 15px 0;
-  }
+}
 
-#winebg {
+.darkmode--activated nav a{
+    color:  #000;
+}
+
+.winebg {
     background-color: #3c191d;
+}
+
+.footer a {
+    color: #fff;
+}
+
+.footer a:hover {
+    color: #EEEDC4;
 }
