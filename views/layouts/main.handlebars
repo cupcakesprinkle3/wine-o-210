@@ -18,16 +18,16 @@
   <!-- Header -->
   <header>
       <h1 class="text-center pt-5"> Wine-O-210</h1>
-      <nav class="navbar navbar-expand navbar-light">
+      <nav class="navbar navbar-expand">
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav m-auto">
-              <a class="nav-item nav-link" href="/">Home</a>
+              <a class="nav-item nav-link" href="/" style="color:grey;">Home</a>
 
               {{#if loggedIn}}
-                  <a class="nav-item nav-link" href="/dashboard">Dashboard</a>
-                  <a id="logout" class="nav-item nav-link">Logout</a>
+                  <a class="nav-item nav-link" href="/dashboard" style="color:grey;">Dashboard</a>
+                  <a id="logout" class="nav-item nav-link" style="color:grey;">Logout</a>
               {{else}}
-                  <a class="nav-item nav-link" href="/login">Login</a>
+                  <a class="nav-item nav-link" href="/login" style="color:grey;">Login</a>
               {{/if}}
 
             </div>
