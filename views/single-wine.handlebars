@@ -1,0 +1,45 @@
+<container>
+<div class="row justify-content-center">
+  
+    <div class="col-10">
+        <!-- displaying articles -->
+        {{> dashboard-cards wine}}
+    </div>  
+
+  <!-- displaying form and comments-->
+  <!-- only display if logged in -->
+  {{#if loggedIn}}
+  <div class="">
+    <div class="row justify-content-center ">
+      <div class="card col-md-7 m-3">
+        <form class="reply-form">
+          <div class="m-4">
+            <label for="reply-body" class="col col-form-label">Post a Comment!</label><br>
+            <textarea class="reply-body" name="reply-body" style="width: 100%;"></textarea>
+          </div>
+
+          <div class="row justify-content-center">
+            <button type="delete" class="btn-danger rounded m-3 col" id="delete-wine-btn">Delete Wine</button>
+            <button type="button" class="vote-btn btn-secondary rounded m-3 col" id="vote-btn">Vote</button>
+            <button type="submit" class="btn-primary rounded m-3 col">Add Comment</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  {{/if}}
+
+  <div class="row justify-content-center">
+      <div class="card col-md-7 m-3">
+          {{> replys wine.replies}}
+      </div>
+  </div>
+</div>
+</container>
+
+
+{{#if loggedIn}}
+    <script src="/javascript/reply.js"></script>
+    <script src="/javascript/vote.js"></script>
+    <script src="/javascript/delete-wine.js"></script>
+{{/if}}

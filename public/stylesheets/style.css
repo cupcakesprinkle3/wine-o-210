@@ -1,1 +1,59 @@
 /* RESET? css framework? */
+
+footer {
+    text-align: center; 
+    text-decoration: none;
+    color: white;
+    background-color: #3c191d;
+}
+
+.reply-body {
+    height: 120px;
+    width: 590px;
+}
+
+.dash-head {
+    font-weight: bold;
+}
+
+a {
+    text-decoration: none;
+    color: #3c191d;
+}
+
+header {
+    text-align: center;
+    background-color: #3c191d;
+    color: white;
+}
+
+main {
+    background-color: #3c191d;
+    padding: 0 0 15px 0;
+}
+
+.darkmode--activated main {
+    background-color: #07428C;
+    padding: 0 0 15px 0;
+}
+
+.darkmode--activated header {
+    background-color:  #07428C;
+    padding: 0 0 15px 0;
+}
+
+.darkmode--activated nav a{
+    color:  #fff;
+}
+
+.winebg {
+    background-color: #3c191d;
+}
+
+.footer a {
+    color: #fff;
+}
+
+.footer a:hover {
+    color: #EEEDC4;
+}

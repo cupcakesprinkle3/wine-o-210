@@ -1,5 +1,4 @@
-const sequelize = require('../config/connection');
-const { User } = require('../models');
+const { Wine } = require('../models');
 
 const winedata = [
     {
@@ -26,6 +25,7 @@ const winedata = [
       price: 24.99,
       notes: "Aromas of red and black berries. The palate is soft and alluring with a wealth of ripe fruit; it finishes long with tons of energy on the palate. It's very approachable."
     },
+
     {
       wine_maker: 'Martin Ray Vineyards & Winery',
       wine_year: 2018,

@@ -1,1 +1,12 @@
-<h1>Hello World</h1>
+<main>
+    <div class="p-3">
+        <h2 class="text-center text-light pb-3">Wine Rack</h2>
+        <div class="container animate__animated animate__fadeInUp">
+            <ol class="container"> 
+                {{#each wines as |wine|}}
+                {{> dashboard-cards wine}}
+                {{/each}}
+            </ol>    
+        </div> 
+    </div>
+</main>
