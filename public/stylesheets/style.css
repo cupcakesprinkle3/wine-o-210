@@ -21,6 +21,10 @@ a {
     color: #3c191d;
 }
 
+a:hover {
+    color: #8f2431;
+}
+
 header {
     text-align: center;
     background-color: #3c191d;
@@ -56,4 +60,27 @@ main {
 
 .footer a:hover {
     color: #EEEDC4;
+}
+
+.btn-primary {
+    background-color: #3c191d;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #8f2431;
+}
+
+.nav-link {
+    color: #3c191d;
+}
+
+.nav-link:hover {
+    color: #8f2431;
+}
+
+.btn-danger {
+    background-color: white;
+    color: red;
+    border: none;
 }
