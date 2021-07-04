@@ -2,12 +2,13 @@
 <div class="row justify-content-center">
   
     <div class="col-md-10">
-        <!-- displaying articles -->
+        <!-- displaying wine cards -->
         {{> dashboard-cards wine}}
     </div>  
 
   <!-- displaying form and comments-->
   <!-- only display if logged in -->
+
   {{#if loggedIn}}
   <div class="">
     <div class="row justify-content-center ">
@@ -34,7 +35,9 @@
           {{> replys wine.replies}}
       </div>
   </div>
+
 </div>
+
 </container>
 
 
