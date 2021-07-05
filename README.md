@@ -16,9 +16,12 @@ Technologies used include: Node.js, HTML, CSS, Bootstrap, Handlebars, GitHub, He
 ## New Technology Used
 A requirement for this project was to: "Use at least one new library, package, or technology that we haven’t discussed." Our new tech used is Darkmode.js, which you can learn more about here: https://www.npmjs.com/package/darkmode-js
 
-## Screenshots
-
-
 ## Deployed App
 https://wine-o-210.herokuapp.com/
 
+## Screenshots
+### Dark mode (aka red wine mode)
+![Screen Shot 2021-07-04 at 5 37 26 PM](https://user-images.githubusercontent.com/79061264/124404305-42be6300-dcef-11eb-96f8-5712a3865bb9.png)
+
+### Light mode (aka white wine mode)
+![Screen Shot 2021-07-04 at 5 37 50 PM](https://user-images.githubusercontent.com/79061264/124404317-494cda80-dcef-11eb-850e-35015d8c5bea.png)
